@@ -50,6 +50,12 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
+  void _resetQuiz(){
+     setState(() {
+      _questionIndex = 0;
+      _score = 0;
+    });
+  }
   @override
   Widget build(BuildContext context) {
 
@@ -59,8 +65,8 @@ class _MyAppState extends State<MyApp> {
           title: Text("My fist text"),
         ),
         body: _questionIndex < _questions.length ? 
-        Quiz(answerQuestion: _answerQuestion,question: _questions[_questionIndex] )
-        : Result(_score),
+        Quiz(answerQuestion: _answerQuestion ,question: _questions[_questionIndex] )
+        : Result(_score, _resetQuiz),
       ),
     );
   }

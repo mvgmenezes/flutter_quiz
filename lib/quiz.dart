@@ -16,8 +16,8 @@ class Quiz extends StatelessWidget {
           //recupera as respostas do json na posicao _questionIndex, e convert para uma List para poder realizar o map. 
           //dentro de cada elemento do MAP retonra o new widget, convert para uma lista e apos isso é necessario usar o 
           //spread ... para recupear os valores e dar um append dentro do children do Column.  
-          ...(question['answers'] as List<String>).map((answer) {
-            return Answer(answerQuestion,answer);
+          ...(question['answers'] as List<Map<String,Object>>).map((answer) {
+            return Answer(()=> answerQuestion(answer['score']),answer);
           }).toList()
         ],);
   }
